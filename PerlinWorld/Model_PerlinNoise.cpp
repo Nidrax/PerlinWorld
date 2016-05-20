@@ -11,8 +11,6 @@ PerlinNoise::PerlinNoise(unsigned int seed) {
 }
 
 float PerlinNoise::Noise(float x, float y, float z) {
-	// CPP implementation of Ken Perlin's Improved Noise found at http://cs.nyu.edu/~perlin/noise/
-
 	int X = (int)floor(x) & 255,
 		Y = (int)floor(y) & 255,
 		Z = (int)floor(z) & 255;

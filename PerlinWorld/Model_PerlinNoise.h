@@ -1,3 +1,5 @@
+// implementation of improved Ken Perlin's noise: http://cs.nyu.edu/~perlin/noise/ | http://mrl.nyu.edu/~perlin/paper445.pdf
+
 #pragma once
 
 #include "stdafx.h"
@@ -12,7 +14,5 @@ public:
 
 private:
 	template <typename T>
-	inline T Fade(T v) {
-		return v * v * v * (v * (v * 6 - 15) + 10);
-	}
+	inline T Fade(T v) { return v * v * v * (v * (v * 6 - 15) + 10); }
 };

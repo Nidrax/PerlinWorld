@@ -1,10 +1,9 @@
 #pragma once
 
 template <typename T>
-inline T Lerp(T v0, T v1, T w){ return fma(w, v1, fma(-w, v0, v0)); }	/* (1-w)*v0 + w*v1 */
+T Lerp(T v0, T v1, T w) { return (1 - w)*v0 + w*v1; }
 /* This function makes a linear interpolation between two values based
-on a weight factor using fused multiply-add for better performance.
-Weight w should be a value in the range [0.0, 1.0] */
+on a weight factor. It should be a value in the range [0.0, 1.0] */
 
 template <typename T>
 inline T Gradient(int hash, T x, T y, T z) {

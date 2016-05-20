@@ -1,7 +1,5 @@
 #include "stdafx.h"
 
-Projectile* projectile;
-
 void Scene::Render(){
 	float gl_amb[] = { 0.0f, 0.0f, 0.0f, 1.0f };
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, gl_amb);
@@ -28,39 +26,4 @@ void Scene::Render(){
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, l1_dif);
 	glLightfv(GL_LIGHT1, GL_SPECULAR, l1_spe);
 	glLightfv(GL_LIGHT1, GL_POSITION, l1_pos);
-
-	glPushMatrix();
-		glBindTexture(GL_TEXTURE_2D, Dirt);
-		float m1_amb[] = { 0.35f, 0.3f, 0.3f };
-		float m1_dif[] = { 0.35f, 0.3f, 0.3f };
-		float m1_spe[] = { 0.0f, 0.0f, 0.0f };
-		glMaterialfv(GL_FRONT, GL_AMBIENT, m1_amb);
-		glMaterialfv(GL_FRONT, GL_DIFFUSE, m1_dif);
-		glMaterialfv(GL_FRONT, GL_SPECULAR, m1_spe);
-
-		glCallList(Mapa);
-	glPopMatrix();
-
-	NewGame.player[0]->Render();
-	NewGame.player[1]->Render();
-
-	if (projectile != nullptr)
-		projectile->Render();
-
-	/*glPushMatrix();
-		glBindTexture(GL_TEXTURE_2D, 0);
-		glDisable(GL_TEXTURE_2D);
-		glDisable(GL_CULL_FACE);
-		glAlphaFunc(GL_GREATER, 0.1);
-		glEnable(GL_ALPHA_TEST);
-		glBegin(GL_QUADS);
-			glColor4f(0.2, 0.35, 1.0, 0.5);
-			glVertex3f(-128.0f, -.5f, 128.0f);
-			glVertex3f(128.0f, -.5f, 128.0f);
-			glVertex3f(128.0f, -.5f, -128.0f);
-			glVertex3f(-128.0f, -.5f, -128.0f);
-		glEnd();
-		glEnable(GL_TEXTURE_2D);
-		glEnable(GL_CULL_FACE); glCullFace(GL_BACK); glFrontFace(GL_CCW);
-	glPopMatrix();*/
 }

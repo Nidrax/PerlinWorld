@@ -4,7 +4,7 @@ int WIDTH = 1280;
 int HEIGHT = 720;
 
 Scene SC;
-Camera *MainCam = new Camera({ -35.0f, 30.0f, -35.0f }, { 0.57f, -0.4f, 0.72f });
+Camera *MainCam = new Camera({ 10.0f, 100.0f, 0.0f }, { 0.57f, -1.5f, 0.72f });
 
 void ViewInit(int argc, char* argv[]) {
 	glutInit(&argc, argv);
@@ -21,20 +21,20 @@ void ViewInit(int argc, char* argv[]) {
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE); glCullFace(GL_BACK); glFrontFace(GL_CCW);
 	glShadeModel(GL_SMOOTH); glEnable(GL_NORMALIZE);
-	glEnable(GL_LIGHTING); glEnable(GL_LIGHT0); glEnable(GL_LIGHT1); glEnable(GL_FOG);
+	glEnable(GL_FOG);
 
 	glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
 
 	glutDisplayFunc(OnRender);
 	glutReshapeFunc(OnReshape);
-	//glutTimerFunc(17, OnTimer, 0);
+	glutTimerFunc(17, OnTimer, 0);
 
 	glutMainLoop();
 }
 
 void OnRender() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glClearColor(0.59f, 0.75f, 0.85f, 1.0f);
+	glClearColor(0.1f, 0.15f, 0.25f, 1.0f);
 	glMatrixMode(GL_MODELVIEW);
 	glEnable(GL_TEXTURE_2D);
 	glLoadIdentity();
@@ -53,4 +53,8 @@ void OnReshape(int width, int height) {
 	glLoadIdentity();
 	glViewport(0, 0, width, height);
 	gluPerspective(60.0f, (float)width / height, .01f, 150.0f);
+}
+
+void OnTimer(int id) {
+	glutTimerFunc(17, OnTimer, 0);
 }

@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClInclude Include="Model_BasicMath.h" />
     <ClInclude Include="Model_Camera.h" />
+    <ClInclude Include="Model_Chunk.h" />
     <ClInclude Include="Model_PerlinNoise.h" />
     <ClInclude Include="Model_Scene.h" />
     <ClInclude Include="Model_Vec3.h" />
@@ -160,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Model_Camera.cpp" />
+    <ClCompile Include="Model_Chunk.cpp" />
     <ClCompile Include="Model_PerlinNoise.cpp" />
     <ClCompile Include="Model_Scene.cpp" />
     <ClCompile Include="PerlinWorld.cpp" />

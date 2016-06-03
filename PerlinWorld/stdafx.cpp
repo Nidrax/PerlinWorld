@@ -6,3 +6,5 @@
 
 // TODO: reference any additional headers you need in STDAFX.H
 // and not in this file
+
+std::vector<std::vector <Chunk>> Map(1, std::vector<Chunk>(1));

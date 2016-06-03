@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <tchar.h>
 #include <vector>
+#include <list>
 #include <algorithm>
 #include <iostream>
 #include <string>
@@ -20,16 +21,20 @@
 #include "Model_Vec3.h"
 #include "Model_Scene.h"
 #include "Model_Camera.h"
+#include "Model_Chunk.h"
 #include "View_BasicRendering.h"
+
+#define ChunkWidthX 128
+#define ChunkWidthY 128
+#define ChunkHeight 16
 
 
 extern int WIDTH;
 extern int HEIGHT;
 
+extern std::vector<std::vector <Chunk>> Map;
+
 extern Scene SC;
 extern Camera *MainCam;
-
-extern std::vector<std::vector<INT16>> heightMap;
-extern std::vector<std::vector<std::vector<bool>>> isSolid;
 
 #pragma endregion

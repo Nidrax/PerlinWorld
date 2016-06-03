@@ -1,40 +1,41 @@
 #include "stdafx.h"
 
-std::vector<std::vector<INT16>> heightMap(64, std::vector<INT16>(64));	// We create a 16x16 vector to store our terrain height values
-std::vector<std::vector<std::vector<bool>>> isSolid(64, std::vector<std::vector<bool>>(64, std::vector<bool>(64)));	// And a 16x16x256 vector to define if the voxel is solid ground or air
-
 int main(int argc, char *argv[]) {
-	unsigned int seed = 13091993;
+	unsigned seed = 130993;
 	PerlinNoise pn(seed);
-	std::cout << seed << std::endl;
 	ReSeed(&seed);
 	PerlinNoise pn2(seed);
-	std::cout << seed << std::endl << std::endl;
 
-	for (unsigned int i = 0; i < 64; i++) {
-		for (unsigned int j = 0; j < 64; j++) {
-			float x = (float)i / ((float)64);
-			float y = (float)j / ((float)64);
+	for (unsigned m = 0; m != Map.size(); ++m) {
+		for (unsigned n = 0; n != Map[0].size(); ++n) {
 
-			float n = 20 * pn.Noise(x, y, 0.3f);
-			n = n - floor(n);
+			for (unsigned i = 0; i < ChunkWidthX; ++i) {
+				for (unsigned j = 0; j < ChunkWidthY; ++j) {
+					float x = (float)(m * ChunkWidthX + i) / ((float)ChunkHeight);
+					float y = (float)(n * ChunkWidthY + j) / ((float)ChunkHeight);
 
-			heightMap[i][j] = (INT16)floor(64 * n);
-		}
-	}
+					float o = pn.Noise(x, y, 0.5f);
+					o = o - floor(o);
 
-	for (unsigned int i = 0; i < 64; i++) {
-		for (unsigned int j = 0; j < 64; j++) {
-			for (unsigned int k = 0; k < 64; k++) {
-				float x = (float)i / ((float)64);
-				float y = (float)j / ((float)64);
-				float z = (float)k / ((float)64);
-
-				float n = 20 * pn2.Noise(x, y, z);
-				n = n - floor(n);
-
-				isSolid[i][j][k] = (n > 0.2f);
+					Map[m][n].Set(i, j, (INT16)floor((ChunkHeight-1) * o + 1));
+				}
 			}
+
+			for (unsigned i = 0; i < ChunkWidthX; ++i) {
+				for (unsigned j = 0; j < ChunkWidthY; ++j) {
+					for (unsigned k = 0; k < ChunkHeight; ++k) {
+						float x = (float)(m * ChunkWidthX + i) / ((float)ChunkHeight);
+						float y = (float)(n * ChunkWidthY + j) / ((float)ChunkHeight);
+						float z = (float)k / ((float)ChunkHeight);
+
+						float o = pn2.Noise(x, y, z);
+						o = o - floor(o);
+
+						Map[m][n].Set(i, j, k, o > 0.2f);
+					}
+				}
+			}
+
 		}
 	}
 

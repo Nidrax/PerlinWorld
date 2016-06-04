@@ -14,7 +14,7 @@ void Scene::Render(){
 				for (unsigned j = 0; j < ChunkWidthY; j++) {
 					for (unsigned k = 0; k < ChunkHeight; k++) {
 						
-						if (k < Map[m][n].Get(i, j) && Map[m][n].Get(i, j, k)) {
+						if (k < Map[m][n].Get(i, j) /*&& Map[m][n].Get(i, j, k)*/) {
 							glColor3f(0.25, 0.3 + 0.025 * k , 0.25);
 							glPushMatrix();
 							glTranslatef(m * ChunkWidthX + i, k, n * ChunkWidthY + j);

@@ -1,7 +1,7 @@
 #pragma once
 
 template <typename T>
-T Lerp(T v0, T v1, T w) { return (1 - w)*v0 + w*v1; }
+T Lerp(T w, T v0, T v1) { return (1 - w)*v0 + w*v1; }
 /* This function makes a linear interpolation between two values based
 on a weight factor. It should be a value in the range [0.0, 1.0] */
 

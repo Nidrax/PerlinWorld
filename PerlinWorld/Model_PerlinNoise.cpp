@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 PerlinNoise::PerlinNoise(unsigned int seed) {
-	p.resize(256);
+	p.resize(ChunkHeight);
 
 	std::iota(p.begin(), p.end(), 0);			// Fills vector p with consecutive values starting from 0
 	std::default_random_engine engine(seed);	// Generates random engine for shuffling
@@ -11,9 +11,9 @@ PerlinNoise::PerlinNoise(unsigned int seed) {
 }
 
 float PerlinNoise::Noise(float x, float y, float z) {
-	int X = (int)floor(x) & 255,
-		Y = (int)floor(y) & 255,
-		Z = (int)floor(z) & 255;
+	int X = (int)floor(x) & (ChunkHeight - 1),
+		Y = (int)floor(y) & (ChunkHeight - 1),
+		Z = (int)floor(z) & (ChunkHeight - 1);
 	x -= floor(x);
 	y -= floor(y);
 	z -= floor(z);

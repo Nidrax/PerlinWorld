@@ -24,8 +24,8 @@
 #include "Model_Chunk.h"
 #include "View_BasicRendering.h"
 
-#define ChunkWidthX 128
-#define ChunkWidthY 128
+#define ChunkWidthX 16
+#define ChunkWidthY 16
 #define ChunkHeight 16
 
 

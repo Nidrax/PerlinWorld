@@ -4,7 +4,7 @@ int WIDTH = 1280;
 int HEIGHT = 720;
 
 Scene SC;
-Camera *MainCam = new Camera({ 10.0f, 100.0f, 0.0f }, { 0.57f, -1.5f, 0.72f });
+Camera *MainCam = new Camera({ (float)(ChunkWidthX * Map.size()) / 2 - 64, 115.0f, (float)(ChunkWidthY * Map[0].size()) / 2 }, { 1.0f, -2.0f, 0.0f });
 
 void ViewInit(int argc, char* argv[]) {
 	glutInit(&argc, argv);
@@ -52,7 +52,7 @@ void OnReshape(int width, int height) {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glViewport(0, 0, width, height);
-	gluPerspective(60.0f, (float)width / height, .01f, 150.0f);
+	gluPerspective(60.0f, (float)width / height, .01f, 250.0f);
 }
 
 void OnTimer(int id) {

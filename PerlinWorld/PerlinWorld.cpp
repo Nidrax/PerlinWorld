@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 int main(int argc, char *argv[]) {
-	unsigned seed = 130993;
+	unsigned seed = 1309;
 	PerlinNoise pn(seed);
 	ReSeed(&seed);
 	PerlinNoise pn2(seed);
@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
 						float o = pn2.Noise(x, y, z);
 						o = o - floor(o);
 
-						Map[m][n].Set(i, j, k, o > 0.2f);
+						Map[m][n].Set(i, j, k, (o > 0.25f) || !k);
 					}
 				}
 			}

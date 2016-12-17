@@ -11,23 +11,24 @@ void Scene::Render(){
 	glFogf(GL_FOG_END, 250.0f);
 
 	for (unsigned m = 0; m != Map.size(); m++) {
-		for (unsigned n = 0; n != Map[0].size(); n++) {
-			for (unsigned i = 0; i < ChunkWidthX; i++) {
-				for (unsigned j = 0; j < ChunkWidthY; j++) {
-					for (unsigned k = 0; k < ChunkHeight; k++) {
+	 for (unsigned n = 0; n != Map[0].size(); n++) {
+	  for (unsigned i = 0; i < ChunkWidthX; i++) {
+	   for (unsigned j = 0; j < ChunkWidthY; j++) {
+	    for (unsigned k = 0; k < ChunkHeight; k++) {
 						
-						if (k < Map[m][n].Get(i, j) && (Map[m][n].Get(i, j, k) || noDensity)) {
-							glColor3f(0.6, 0.2 + (0.5 / ChunkHeight) * k , 0.1);
-							glPushMatrix();
-							glTranslatef(m * ChunkWidthX + i, k, n * ChunkWidthY + j);
-							glutSolidCube(1.0f);
-							glPopMatrix();
-						}
+		 if (k < Map[m][n].Get(i, j) && (Map[m][n].Get(i, j, k) || noDensity))
+		 {
+			glColor3f(0.6, 0.2 + (0.5 / ChunkHeight) * k , 0.1);
+			glPushMatrix();
+			glTranslatef(m * ChunkWidthX + i, k, n * ChunkWidthY + j);
+			glutSolidCube(1.0f);
+			glPopMatrix();
+		 }
 
-					}
-				}
-			}
-		}
+	    }
+	   }
+	  }
+	 }
 	}
 
 	glFlush();

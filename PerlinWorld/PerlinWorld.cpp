@@ -11,8 +11,10 @@ int main(int argc, char *argv[]) {
 
 			for (unsigned i = 0; i < ChunkWidthX; ++i) {
 				for (unsigned j = 0; j < ChunkWidthY; ++j) {
-					float x = (float)(m * ChunkWidthX + i) / ((float)ChunkHeight);
-					float y = (float)(n * ChunkWidthY + j) / ((float)ChunkHeight);
+					float x = (float)(m * ChunkWidthX + i)
+						/ ((float)ChunkHeight);
+					float y = (float)(n * ChunkWidthY + j)
+						/ ((float)ChunkHeight);
 
 					float o = pn.Noise(x, y, 0.2f);
 					o = o - floor(o);
@@ -24,8 +26,10 @@ int main(int argc, char *argv[]) {
 			for (unsigned i = 0; i < ChunkWidthX; ++i) {
 				for (unsigned j = 0; j < ChunkWidthY; ++j) {
 					for (unsigned k = 0; k < ChunkHeight; ++k) {
-						float x = (float)(m * ChunkWidthX + i) / ((float)ChunkHeight);
-						float y = (float)(n * ChunkWidthY + j) / ((float)ChunkHeight);
+						float x = (float)(m * ChunkWidthX + i)
+							/ ((float)ChunkHeight);
+						float y = (float)(n * ChunkWidthY + j)
+							/ ((float)ChunkHeight);
 						float z = (float)k / ((float)ChunkHeight);
 
 						float o = pn2.Noise(x, y, z);

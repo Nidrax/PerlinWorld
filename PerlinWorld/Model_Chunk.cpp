@@ -2,7 +2,8 @@
 
 Chunk::Chunk() {
 	heightMap.resize(ChunkWidthX, std::vector<INT16>(ChunkWidthY));
-	isSolid.resize(ChunkWidthX, std::vector<std::vector<bool>>(ChunkWidthY, std::vector<bool>(ChunkHeight)));
+	isSolid.resize(ChunkWidthX, std::vector<std::vector<bool>>
+		(ChunkWidthY, std::vector<bool>(ChunkHeight)));
 }
 
 void Chunk::Set(unsigned x, unsigned y, INT16 val) {

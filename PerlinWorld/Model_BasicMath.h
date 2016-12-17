@@ -12,7 +12,7 @@ inline T FmaLerp(T w, T v0, T v1) { return _Fma(w, v1, _Fma(-w, v0, v0)); }
 
 template <typename T>
 inline T Gradient(int hash, T x, T y, T z) {
-	int h = hash & 15;	// Convert lower 4 bits of hash into 12 gradient directions
+	int h = hash & 15;	// Convert lower 4 bits into 12 gradient directions
 	T u = h < 8 ? x : y,
 		v = h < 4 ? y : h == 12 || h == 14 ? x : z;
 	return ((h & 1) == 0 ? u : -u) + ((h & 2) == 0 ? v : -v);
@@ -25,7 +25,8 @@ inline unsigned int Hash(std::string s) {
 }
 
 inline void ReSeed(unsigned int *seed) {
-	*seed = floor(1 + ((*seed / 2) + 2 * sqrt(*seed)) / 2 + *seed / 2 + 4 * sqrt(*seed));
+	*seed = floor(1 + ((*seed / 2) + 2 * sqrt(*seed)) / 2
+		+ *seed / 2 + 4 * sqrt(*seed));
 }
 
 struct vec3 {
@@ -124,9 +125,14 @@ struct vec3 {
 	void Rotate(vec3 r) {
 		r = r * (M_PI / 180.0f);
 
-		float nx = x * cos(r.y) * cos(r.z) + y * (-cos(r.x) * sin(r.z) + sin(r.x) * sin(r.y) * cos(r.z)) + z * (sin(r.x) * sin(r.z) + cos(r.x) * sin(r.y) * cos(r.z));
-		float ny = x * cos(r.y) * sin(r.z) + y * (cos(r.x) * cos(r.z) + sin(r.x) * sin(r.y) * sin(r.z)) + z * (-sin(r.x) * cos(r.z) + cos(r.x) * sin(r.y) * sin(r.z));
-		float nz = -x * sin(r.y) + y * sin(r.x) * cos(r.y) + z * cos(r.x) * cos(r.y);
+		float nx = x * cos(r.y) * cos(r.z) + y * (-cos(r.x) * sin(r.z)
+			+ sin(r.x) * sin(r.y) * cos(r.z)) + z * (sin(r.x) * sin(r.z)
+			+ cos(r.x) * sin(r.y) * cos(r.z));
+		float ny = x * cos(r.y) * sin(r.z) + y * (cos(r.x) * cos(r.z)
+			+ sin(r.x) * sin(r.y) * sin(r.z)) + z * (-sin(r.x) * cos(r.z)
+			+ cos(r.x) * sin(r.y) * sin(r.z));
+		float nz = -x * sin(r.y) + y * sin(r.x) * cos(r.y)
+			+ z * cos(r.x) * cos(r.y);
 
 		x = nx;
 		y = ny;

@@ -3,11 +3,15 @@
 PerlinNoise::PerlinNoise(unsigned int seed) {
 	p.resize(ChunkHeight);
 
-	std::iota(p.begin(), p.end(), 0);			// Fills vector p with consecutive values starting from 0
-	std::default_random_engine engine(seed);	// Generates random engine for shuffling
-	std::shuffle(p.begin(), p.end(), engine);	// Shuffles the vector p
+	std::iota(p.begin(), p.end(), 0);			
+		// Fills vector p with consecutive values starting from 0
+	std::default_random_engine engine(seed);	
+		// Generates random engine for shuffling
+	std::shuffle(p.begin(), p.end(), engine);	
+		// Shuffles the vector p
 
-	p.insert(p.end(), p.begin(), p.end());		// We double the permutation vector
+	p.insert(p.end(), p.begin(), p.end());		
+		// We double the permutation vector
 }
 
 float PerlinNoise::Noise(float x, float y, float z) {

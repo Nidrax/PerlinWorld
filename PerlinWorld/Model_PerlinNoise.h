@@ -1,4 +1,5 @@
-// implementation of improved Ken Perlin's noise: http://cs.nyu.edu/~perlin/noise/ | http://mrl.nyu.edu/~perlin/paper445.pdf
+// implementation of improved Ken Perlin's noise:
+// http://cs.nyu.edu/~perlin/noise/ | http://mrl.nyu.edu/~perlin/paper445.pdf
 
 #ifndef PERLINWORLD_MODEL_PERLINNOISE_H
 #define PERLINWORLD_MODEL_PERLINNOISE_H

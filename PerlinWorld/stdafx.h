@@ -13,9 +13,14 @@
 #include <random>
 #include <time.h>
 
-#include "gsl.h"			// For C++11 guidelines purpose only. You can just remove this line instead of getting GSL (found at https://github.com/Microsoft/GSL)
-#include "GL/freeglut.h"	// Just grab the newest freeglut library (Google is your friend) and add it to your project includes directory
-#include "boost/crc.hpp"	// Get it from Boost library: http://www.boost.org/
+#include "gsl.h"			
+	// For C++11 guidelines purpose only. You can just remove this line
+	// instead of getting GSL (found at https://github.com/Microsoft/GSL)
+#include "GL/freeglut.h"
+	// Just grab the newest freeglut library (Google is your friend)
+	// and add it to your project includes directory
+#include "boost/crc.hpp"
+	// Get it from Boost library: http://www.boost.org/
 
 #include "Model_BasicMath.h"
 #include "Model_PerlinNoise.h"

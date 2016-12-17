@@ -4,14 +4,17 @@ int WIDTH = 1280;
 int HEIGHT = 720;
 
 Scene SC;
-Camera *MainCam = new Camera({ (float)(ChunkWidthX * Map.size()) / 2 - 86, 64.0f, (float)(ChunkWidthY * Map[0].size()) / 2 }, { 1.0f, -1.0f, 0.0f });
+Camera *MainCam = new Camera({ (float)(ChunkWidthX * Map.size()) / 2
+	- 86, 64.0f, (float)(ChunkWidthY * Map[0].size()) / 2 },
+	{ 1.0f, -1.0f, 0.0f });
 
 void ViewInit(int argc, char* argv[]) {
 	glutInit(&argc, argv);
 
 	glutInitWindowPosition(100, 100);
 	glutInitWindowSize(WIDTH, HEIGHT);
-	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
+	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE |
+		GLUT_DEPTH | GLUT_MULTISAMPLE);
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -41,7 +44,9 @@ void OnRender() {
 	glEnable(GL_TEXTURE_2D);
 	glLoadIdentity();
 
-	gluLookAt(MainCam->pos.x, MainCam->pos.y, MainCam->pos.z, MainCam->pos.x + MainCam->dir.x, MainCam->pos.y + MainCam->dir.y, MainCam->pos.z + MainCam->dir.z, 0.0f, 1.0f, 0.0f);
+	gluLookAt(MainCam->pos.x, MainCam->pos.y, MainCam->pos.z, MainCam->pos.x
+		+ MainCam->dir.x, MainCam->pos.y + MainCam->dir.y, MainCam->pos.z
+		+ MainCam->dir.z, 0.0f, 1.0f, 0.0f);
 
 	SC.Render();
 

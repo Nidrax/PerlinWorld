@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
 					float x = (float)(m * ChunkWidthX + i) / ((float)ChunkHeight);
 					float y = (float)(n * ChunkWidthY + j) / ((float)ChunkHeight);
 
-					float o = pn.Noise(x, y, 0.8f);
+					float o = pn.Noise(x, y, 0.2f);
 					o = o - floor(o);
 
 					Map[m][n].Set(i, j, (INT16)floor((ChunkHeight-1) * o + 1));

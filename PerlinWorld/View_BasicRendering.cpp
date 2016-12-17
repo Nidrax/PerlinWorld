@@ -4,7 +4,7 @@ int WIDTH = 1280;
 int HEIGHT = 720;
 
 Scene SC;
-Camera *MainCam = new Camera({ (float)(ChunkWidthX * Map.size()) / 2 - 64, 115.0f, (float)(ChunkWidthY * Map[0].size()) / 2 }, { 1.0f, -2.0f, 0.0f });
+Camera *MainCam = new Camera({ (float)(ChunkWidthX * Map.size()) / 2 - 86, 64.0f, (float)(ChunkWidthY * Map[0].size()) / 2 }, { 1.0f, -1.0f, 0.0f });
 
 void ViewInit(int argc, char* argv[]) {
 	glutInit(&argc, argv);
@@ -16,7 +16,7 @@ void ViewInit(int argc, char* argv[]) {
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	glutCreateWindow("GameInOneWeek");
+	glutCreateWindow("PerlinWorld");
 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE); glCullFace(GL_BACK); glFrontFace(GL_CCW);
@@ -27,7 +27,9 @@ void ViewInit(int argc, char* argv[]) {
 
 	glutDisplayFunc(OnRender);
 	glutReshapeFunc(OnReshape);
-	glutTimerFunc(17, OnTimer, 0);
+	glutTimerFunc(1, OnTimer, 0);
+	glutKeyboardFunc(OnKeyPress);
+	glutKeyboardUpFunc(OnKeyUp);
 
 	glutMainLoop();
 }
@@ -56,5 +58,5 @@ void OnReshape(int width, int height) {
 }
 
 void OnTimer(int id) {
-	glutTimerFunc(17, OnTimer, 0);
+	glutTimerFunc(1, OnTimer, 0);
 }

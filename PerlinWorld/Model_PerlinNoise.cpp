@@ -23,12 +23,12 @@ float PerlinNoise::Noise(float x, float y, float z) {
 	int A = p[X] + Y, AA = p[A] + Z, AB = p[A + 1] + Z,
 		B = p[X + 1] + Y, BA = p[B] + Z, BB = p[B + 1] + Z;
 
-	return (Lerp(w, Lerp(v, Lerp(u, Gradient(p[AA], x, y, z),
+	return (BasicLerp(w, BasicLerp(v, BasicLerp(u, Gradient(p[AA], x, y, z),
 		Gradient(p[BA], x - 1, y, z)),
-		Lerp(u, Gradient(p[AB], x, y - 1, z),
+		BasicLerp(u, Gradient(p[AB], x, y - 1, z),
 			Gradient(p[BB], x - 1, y - 1, z))),
-		Lerp(v, Lerp(u, Gradient(p[AA + 1], x, y, z - 1),
+		BasicLerp(v, BasicLerp(u, Gradient(p[AA + 1], x, y, z - 1),
 			Gradient(p[BA + 1], x - 1, y, z - 1)),
-			Lerp(u, Gradient(p[AB + 1], x, y - 1, z - 1),
+			BasicLerp(u, Gradient(p[AB + 1], x, y - 1, z - 1),
 				Gradient(p[BB + 1], x - 1, y - 1, z - 1)))));
 }

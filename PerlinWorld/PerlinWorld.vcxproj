@@ -76,6 +76,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <ExecutablePath>D:\Projekty i Programowanie\GIT REPOSITORIES\PerlinWorld\PerlinWorld\freeglut\bin\x64;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>C:\boost;D:\Projekty i Programowanie\GIT REPOSITORIES\PerlinWorld\PerlinWorld\freeglut\include;D:\Projekty i Programowanie\GIT REPOSITORIES\PerlinWorld\PerlinWorld\GSL;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Projekty i Programowanie\GIT REPOSITORIES\PerlinWorld\PerlinWorld\freeglut\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -87,11 +90,12 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -102,9 +106,12 @@
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -150,17 +157,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Model_BasicMath.h" />
-    <ClInclude Include="Model_Camera.h" />
     <ClInclude Include="Model_Chunk.h" />
     <ClInclude Include="Model_PerlinNoise.h" />
     <ClInclude Include="Model_Scene.h" />
-    <ClInclude Include="Model_Vec3.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="View_BasicRendering.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Model_Camera.cpp" />
     <ClCompile Include="Model_Chunk.cpp" />
     <ClCompile Include="Model_PerlinNoise.cpp" />
     <ClCompile Include="Model_Scene.cpp" />
